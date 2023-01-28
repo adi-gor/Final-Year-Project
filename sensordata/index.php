@@ -11,6 +11,7 @@
 <body>
 
     <h1>SENSOR DATA</h1>
+    <h3><a href="http://192.168.43.110/"> Go to Motor Status</a></h3>
 <?php
 $servername = "localhost";
 $username = "root";
