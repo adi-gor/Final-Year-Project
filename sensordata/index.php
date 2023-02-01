@@ -11,7 +11,8 @@
 <body>
 
     <h1>SENSOR DATA</h1>
-    <h3><a href="http://192.168.43.110/"> Go to Motor Status</a></h3>
+    <h3><a href="http://192.168.43.110/">Motor Status</a></h3>
+    <h3><a href="http://localhost:3000/">Generate CSV</a></h3>
 <?php
 $servername = "localhost";
 $username = "root";
