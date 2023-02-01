@@ -6,6 +6,7 @@ body {
     letter-spacing: -0.015em;
     text-align: center;
 }
+
 table {
 margin-left: auto;
 margin-right: auto;
@@ -29,12 +30,14 @@ text-align: center;
 border: 1px solid #DDD;
 }
 
-#moisture {
-    width: 75px;
-    text-align: center;
+.button {
+    background-color: #195B6A; 
+    border: none; 
+    color: white; 
+    padding: 15px 32px;
+    text-decoration: none; 
+    font-size: 15px; 
+    margin: 2px; 
+    cursor: pointer;
 }
 
-#motor {
-    width: 75px;
-    text-align: center;
-}
