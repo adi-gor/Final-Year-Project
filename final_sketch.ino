@@ -10,6 +10,7 @@
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
+#include "ThingSpeak.h"
 
 #define DHTPIN D2
 #define sensorPower 5
@@ -30,9 +31,13 @@ WiFiServer server(80);
 // Keep this API Key value to be compatible with the PHP code provided in the project page. 
 // If you change the apiKeyValue value, the PHP file /post-esp-data.php also needs to have the same key 
 String apiKeyValue = "tPmAT5Ab3j7F9";
+const char* myWriteAPIKey = "VFQ84W3QGG4YI9UN";
+unsigned long myChannelNumber = 1;
+WiFiClient  client;
+
 String header;
 
-String sensorName = "Sensor";
+String sensorName = "DHT11-Raindrop";
 String sensorLocation = "My Room";
 
 // Auxiliar variables to store the current output state
@@ -68,6 +73,7 @@ void setup() {
   Serial.print("Connected to WiFi network with IP Address: ");
   Serial.println(WiFi.localIP());
   server.begin();
+  ThingSpeak.begin(client);
 
   // (you can also pass in a Wire library object like &Wire2)
 
@@ -109,7 +115,6 @@ void loop() {
   
   //Check WiFi connection status
   if(WiFi.status()== WL_CONNECTED){
-    WiFiClient client;
     HTTPClient http;
     
     // Your Domain name with URL path or IP address with path
@@ -148,6 +153,19 @@ void loop() {
       Serial.print("Error code: ");
       Serial.println(httpResponseCode);
     }
+    
+    ThingSpeak.setField(1, t);
+    ThingSpeak.setField(2, h);
+
+    int x = ThingSpeak.writeFields(myChannelNumber, myWriteAPIKey);
+
+    if(x == 200){
+      Serial.println("Channel update successful.");
+    }
+    else{
+      Serial.println("Problem updating channel. HTTP error code " + String(x));
+    }
+    
   client = server.available();
   if (client) {                             // If a new client connects,
     Serial.println("New Client.");          // print a message out in the serial port
