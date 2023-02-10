@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Connection failed: " . $conn->connect_error);
         } 
         
-        $sql = "INSERT INTO SensorData (sensor, location, value1, value2, value3)
+        $sql = "INSERT INTO SensorData (SENSORS, LOCATION, TEMPERATURE, HUMIDITY, WATER_LEVEL)
         VALUES ('" . $sensor . "', '" . $location . "', '" . $value1 . "', '" . $value2 . "', '" . $value3 . "')";
         
         if ($conn->query($sql) === TRUE) {
