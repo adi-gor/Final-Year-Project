@@ -20,8 +20,6 @@ $servername = "localhost";
 $username = "root";
 $password = "rellik";
 $dbname = "sensordata";
-global $rain_value;
-
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -30,7 +28,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id, SENSORS, LOCATION, TEMPERATURE, HUMIDITY, WATER_LEVEL, READING_TIME FROM sensordata ORDER BY id DESC"; /*select items to display from the sensordata table in the data base*/
+$sql = "SELECT id, SENSORS, LOCATION, TEMPERATURE, HUMIDITY, SOIL_MOISTURE, READING_TIME FROM sensordata ORDER BY id DESC"; /*select items to display from the sensordata table in the data base*/
 
 echo '<table cellspacing="5" cellpadding="5">
       <tr> 
@@ -40,7 +38,7 @@ echo '<table cellspacing="5" cellpadding="5">
         <th>Location</th> 
         <th>Temperature</th> 
         <th>Humidity</th>
-        <th>Water Level</th>       
+        <th>Soil Moisture %</th>       
       </tr>';
  
 if ($result = $conn->query($sql)) {
@@ -51,21 +49,14 @@ if ($result = $conn->query($sql)) {
         $row_location = $row["LOCATION"];
         $row_value1 = $row["TEMPERATURE"];
         $row_value2 = $row["HUMIDITY"]; 
-        $row_value3 = $row["WATER_LEVEL"]; 
+        $row_value3 = $row["SOIL_MOISTURE"]; 
         
         // Uncomment to set timezone to - 1 hour (you can change 1 to any number)
        // $row_reading_time = date("Y-m-d H:i:s", strtotime("$row_reading_time - 1 hours"));
       
         // Uncomment to set timezone to + 4 hours (you can change 4 to any number)
         //$row_reading_time = date("Y-m-d H:i:s", strtotime("$row_reading_time + 4 hours"));\
-        if ($row_value3 == '0')
-        {
-            $rain_value = "High";
-        }
-        if ($row_value3 == '1')
-        {
-            $rain_value = "Low";
-        }
+        
         echo '<tr> 
                 <td>' . $row_id . '</td> 
                 <td>' . $row_reading_time . '</td> 
@@ -73,7 +64,7 @@ if ($result = $conn->query($sql)) {
                 <td>' . $row_location . '</td> 
                 <td>' . $row_value1 . '</td> 
                 <td>' . $row_value2 . '</td>
-                <td>' . $rain_value . '</td>
+                <td>' . $row_value3 . '</td>
               </tr>';
     }
     $result->free();
