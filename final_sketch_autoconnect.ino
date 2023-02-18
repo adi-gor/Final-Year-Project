@@ -10,6 +10,7 @@
   #include <WiFiClient.h>
 #endif
 
+#include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
@@ -27,6 +28,14 @@ DHT dht = DHT(DHTPIN, DHTTYPE);
 //const char* ssid     = "Redmi Note 7 Pro";
 //const char* password = "aditya04";
 
+
+const int AirValue = 730;   //you need to replace this value with Value_1
+const int WaterValue = 303;  //you need to replace this value with Value_2
+const int SensorPin = A0;
+int soilMoistureValue = 0;
+int soilmoisturepercent=0;
+
+
 // REPLACE with your Domain name and URL path or IP address with path
 const char* serverName = "http://192.168.43.107/sensordata/post-esp-data.php";
 WiFiServer server(80);
@@ -40,7 +49,7 @@ WiFiClient  client;
 
 String header;
 
-String sensorName = "DHT11-Raindrop";
+String sensorName = "DHT11-SoilMoisture";
 String sensorLocation = "My Room";
 
 // Auxiliar variables to store the current output state
@@ -113,14 +122,27 @@ void setup() {
 }
 
 void loop() {
-  int val = readSensor();
+  soilMoistureValue = analogRead(SensorPin);
+  Serial.println(soilMoistureValue);
+  delay(1000);
+  soilmoisturepercent = map(soilMoistureValue, AirValue, WaterValue, 0, 100);
   
-  
-  if (val) {
-    Serial.println("Rain Status: Not Raining");
-  } else {
-    Serial.println("Rain Status: Raining");
+  if(soilmoisturepercent > 100)
+  {
+    Serial.println("100 %");
   }
+
+  else if(soilmoisturepercent <0)
+  {
+    Serial.println("0 %");
+  }
+  
+  else if(soilmoisturepercent >=0 && soilmoisturepercent <= 100)
+  {
+    Serial.print(soilmoisturepercent);
+    Serial.println("%");
+  }  
+
   
   delay(1000);  
   Serial.println();
@@ -155,7 +177,7 @@ void loop() {
     // Prepare your HTTP POST request data
     String httpRequestData = "api_key=" + apiKeyValue + "&sensor=" + sensorName
                           + "&location=" + sensorLocation + "&value1=" + String(t)
-                          + "&value2=" + String(h) + "&value3=" + String(val) + "";
+                          + "&value2=" + String(h) + "&value3=" + String(soilmoisturepercent) + "";
     Serial.print("httpRequestData: ");
     Serial.println(httpRequestData);
     
@@ -185,6 +207,8 @@ void loop() {
     
     ThingSpeak.setField(1, t);
     ThingSpeak.setField(2, h);
+    ThingSpeak.setField(3, soilmoisturepercent);
+    
 
     int x = ThingSpeak.writeFields(myChannelNumber, myWriteAPIKey);
 
