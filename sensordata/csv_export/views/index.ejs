@@ -8,7 +8,7 @@
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-        <title>Export CSV</title>
+        <title>Export as CSV</title>
     </head>
     <body>
         <div class="container">
@@ -16,7 +16,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-md-10">1 = Low, 0 = High</div>
+                        <div class="col-md-10"></div>
                         <div class="col-md-2">
                             <a href="/export" class="btn btn-success btn-sm float-end">Download</a>
                         </div>
@@ -26,21 +26,21 @@
                         
                     <table class="table table-bordered">
                         <tr>
-                            <th>Sensor</th>
+                            <th>Sensors</th>
                             <th>Location</th>
                             <th>Temperature</th>
                             <th>Humidity</th>
-                            <th>Soil Moisture</th>
+                            <th>Soil Moisture %</th>
                             <th>Reading_Time</th>
                         </tr>
                         <% sensordata.forEach(function(data){ %>
                         <tr>
-                            <td><%= data.sensor %></td>
-                            <td><%= data.location %></td>
-                            <td><%= data.value1 %></td>
-                            <td><%= data.value2 %></td>
-                            <td><%= data.value3 %></td>
-                            <td><%= data.reading_time %></td>
+                            <td><%= data.SENSORS %></td>
+                            <td><%= data.LOCATION %></td>
+                            <td><%= data.TEMPERATURE %></td>
+                            <td><%= data.HUMIDITY %></td>
+                            <td><%= data.SOIL_MOISTURE %></td>
+                            <td><%= data.READING_TIME %></td>
                         </tr>
                         <% }); %>
                     </table>
