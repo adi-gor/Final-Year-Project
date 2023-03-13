@@ -1,4 +1,4 @@
-# Automation in Irrigation using IoT
+# Automation in Irrigation using IoT and ML based Crop Recommendation System
 The project consists of hardware circuit which has an
 ESP8266 microcontroller connected with DHT11 and Capacitive Soil Moisture sensors. 
 Both of these sensors arerelatively inexpensive and provide fairly accurate values. 
