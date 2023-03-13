@@ -16,3 +16,4 @@ downloading sensor data into a CSV format requires MS Excel
 or any other application that can read file stored in this format.
 
 A. Node MCU connectivity
+![WhatsApp Image 2023-02-27 at 1.41.33 PM](WhatsApp Image 2023-02-27 at 1.41.33 PM.jpeg)
