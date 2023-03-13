@@ -14,6 +14,15 @@ tier version of its service to 3 million messages per year and
 message update interval time to 15 seconds. The feature of
 downloading sensor data into a CSV format requires MS Excel
 or any other application that can read file stored in this format.
+The system also features a Machine Learning
+based crop recommendation system that is integrated into the
+main website. Upon giving the required environmental and
+soil parameters, the program recommends most suitable crop
+that could be grown by running a highly accurate Machine
+Learning Model. This helps the farmer to choose crops that
+may give maximum yield. As India is a huge country impacted
+by the vagaries of climate, appropriate crop selection becomes
+a question of utmost importance.
 
 A. Node MCU connectivity
 
@@ -82,4 +91,6 @@ is useful if the user wants to run his/her own analytics locally
 such as generating descriptive statistics on the sensor data.
 This feature has been developed using Express.js and makes
 use of EJS for generating HTML markup.
+
+H. Crop Recommendation System
 
