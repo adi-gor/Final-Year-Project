@@ -75,8 +75,8 @@ turned off.
 
 F. Data Collection Dashboard
 
-The data collection dashboard shows a webpage that displays the frequently updating values from the ThingSpeak
-channel. Users have not been granted direct access to ThingSpeak channel due to privacy and security concerns related to
+The data collection dashboard shows a webpage that displays the frequently updating values from the ThingSpeak
+channel. Users have not been granted direct access to ThingSpeak channel due to privacy and security concerns related to
 API keys.
 
 G. Export as CSV
@@ -94,3 +94,4 @@ use of EJS for generating HTML markup.
 
 H. Crop Recommendation System
 
+A crop recommendation system has been developed which predicts the most suitable crop based on a variety of environmental and soil parameters. 22 different types of crops are recommended by this system. The dataset used for training and testing of the machine learning model has been acquired from https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset. The parameters used in this system are Nitrogen, Phosphorus and Potassium content and pH value of the soil, Temperature, Humidity and average Rainfall in mm. Some of the data is collected i.e. Temperature and Humidity has been collected from the sensors earlier. NPK content and pH of the soil can be obtained from district wise government soil testing laboratory and average rainfall of every district can be obtained from Indian Meteorological Department (IMD) website. After satisfying the input constraints of the application, the program outputs the recommended crop after running a Machine Learning model. The model used in this application is K Nearest Neighbours, which gives a highly accurate result. This feature has been developed mainly using Python library Scikit-learn for machine learning tasks and PySimpleGUIWeb for user interface.
