@@ -16,11 +16,13 @@ downloading sensor data into a CSV format requires MS Excel
 or any other application that can read file stored in this format.
 
 A. Node MCU connectivity
+
 Users have to first connect their mobile phone to the Node
 MCU. This is required to establish stable connection. Users
 should also have their device connected to their computer.
 
 B. Data acquisition from sensors
+
 The values returned by the soil moisture sensor and DHT11
 sensor in real time are sent to a locally hosted Apache server
 and are stored in MySQL database. The same data is also sent
@@ -29,6 +31,7 @@ has been created to record and display real time change in
 sensor values by plotting a value vs timestamp graph.
 
 C. Login page
+
 A login page has been created that needs user name and
 password for authentication. In order to login to the system to
 view the main webpage users need to provide their email ID
@@ -36,6 +39,7 @@ as username and a 6 letter password. Authentication has been
 achieved by writing a code snippet in JavaScript.
 
 D. Sensor Data
+
 The real time values stored in the database are being
 constantly updated and are displayed on an automatically
 updating web page. The web page shows data such as date
@@ -45,6 +49,7 @@ the backend to fetch data from the database. The web interface
 links to all the features provided by the system.
 
 E. Motor Status
+
 If the user notices that the soil moisture level readings taken
 in real time are somehow less than what is predetermined
 than the user can click on motor status link which will
@@ -60,11 +65,13 @@ signal to the motor through relay and the motor is finally
 turned off.
 
 F. Data Collection Dashboard
+
 The data collection dashboard shows a webpage that displays the frequently updating values from the ThingSpeak
 channel. Users have not been granted direct access to ThingSpeak channel due to privacy and security concerns related to
 API keys.
 
 G. Export as CSV
+
 If the user wants to download a snapshot of the sensor
 readings taken during any particular time, he/she can do so
 by going to the export as CSV page here the sensor readings
