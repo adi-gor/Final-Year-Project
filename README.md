@@ -1,8 +1,8 @@
 # Automation in Irrigation using IoT
 The project consists of hardware circuit which has an
-ESP8266 microcontroller connected with DHT11 and Capacitive Soil Moisture sensors. Both of these sensors are
-relatively inexpensive and provide fairly accurate values. The
-ESP8266 microcontroller also known as Node MCU is useful
+ESP8266 microcontroller connected with DHT11 and Capacitive Soil Moisture sensors. 
+Both of these sensors arerelatively inexpensive and provide fairly accurate values. 
+The ESP8266 microcontroller also known as Node MCU is useful
 for enabling WiFi connectivity. Users can easily connect to the
 Node MCU via their mobile phone. Similarly they can connect
 their computer to the phone WiFi and hence data exchange and
