@@ -14,4 +14,5 @@ tier version of its service to 3 million messages per year and
 message update interval time to 15 seconds. The feature of
 downloading sensor data into a CSV format requires MS Excel
 or any other application that can read file stored in this format.
+
 A. Node MCU connectivity
